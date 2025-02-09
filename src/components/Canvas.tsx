@@ -8,7 +8,7 @@ interface Point {
 }
 
 const openai = new OpenAI({
-  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
+  apiKey: import.meta.env.VITE_OPENAI_API_KEY || "",
   dangerouslyAllowBrowser: true,
 });
 
@@ -133,7 +133,7 @@ export default function Canvas() {
 
       // Send to OpenAI Vision API
       const response = await openai.chat.completions.create({
-        model: "gpt-4-vision-preview",
+        model: "gpt-4o",
         messages: [
           {
             role: "user",
@@ -239,4 +239,3 @@ export default function Canvas() {
     </div>
   );
 }
-
