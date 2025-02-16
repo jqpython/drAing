@@ -133,14 +133,14 @@ export default function Canvas() {
 
       // Send to OpenAI Vision API
       const response = await openai.chat.completions.create({
-        model: "gpt-4o",
+        model: "gpt-4o-mini",
         messages: [
           {
             role: "user",
             content: [
               {
                 type: "text",
-                text: "You are a friendly AI assistant for kids. Please describe what you see in this drawing in a fun, encouraging way that a child would enjoy. Keep it brief and positive. Start with 'I see...' or 'Wow!' or similar enthusiastic opener.",
+                text: "You are a friendly AI assistant for kids. Please describe in One Line what you see in this drawing in a fun, encouraging way that a child would enjoy. Keep it brief and positive. Start with a welcome 'Hi, Weclome to NI Science Festival' or 'Ai4Fun' then continue with 'Wow!...' or similar enthusiastic opener, and give suggestions or ideas in the end how they can improve it!",
               },
               {
                 type: "image_url",
@@ -160,9 +160,7 @@ export default function Canvas() {
       }
     } catch (error) {
       console.error("Error analyzing drawing:", error);
-      setAiResponse(
-        "Oops! The magic wand needs a little rest. Try again in a moment!",
-      );
+      setAiResponse("Oops! Try again in a moment!");
     } finally {
       setLoading(false);
     }
@@ -209,10 +207,10 @@ export default function Canvas() {
           <button
             onClick={analyzeDrawing}
             disabled={loading}
-            className="flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 disabled:opacity-50"
+            className="flex items-center gap-2 px-4 py-2 bg-orange-500 text-white rounded-lg hover:bg-organe-700 disabled:opacity-50"
           >
             <Wand2 size={20} />
-            {loading ? "Magic happening..." : "Make it Magic!"}
+            {loading ? "Just a wee sec..." : "drAing it!"}
           </button>
         </div>
       </div>
